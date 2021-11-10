@@ -1,0 +1,21 @@
+[
+    {
+        "Nombre": "Alejandro",
+        "Apellido": "Cardona",
+        "DNI": "98.765.432",
+        "Guardaropa": [
+            {
+                "prenda": "zapatillas",
+                "cantidad": 4
+            },
+            {
+                "prenda": "remeras",
+                "cantidad": 12
+            },
+            {
+                "prenda": "pantalones",
+                "cantidad": 6
+            }
+        ]
+    }
+]
