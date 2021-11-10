@@ -12,6 +12,14 @@ import requests
 
 import matplotlib.pyplot as plt
 
+def extract(url):
+    # Extraer el JSON de la URL pasada
+    # como parámetro
+    response = requests.get(url)
+    data = response.json()
+    return data
+
+
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
@@ -34,6 +42,8 @@ if __name__ == '__main__':
     # y armar un gráfico de barras resumiendo la información.
     # gráfico en el eje "x" está cada uno de los 10 usuarios y en el eje
     # "y" la cantidad de títulos completados
+
+
 
     # Para poder ir haciendo esto debe ir almacenando la información
     # de cada usuario a medida que "itera" en un bucle los datos
