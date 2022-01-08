@@ -19,30 +19,36 @@ def extract(url):
     data = response.json()
     return data
 
-def listfjson(data, para1):
-    '''Filtra un JSON (data) y genera una lista en base a un parametro (para1)'''
-    list_1 = [d[para1] for d in data]
+def listfjson(data, p1, p2, n):
+    '''Filtra un JSON (data) y genera una y con los 
+    valores de (p1) en base al valor de (p2)'''
+    list_1 = [d[p1] for d in data if d[p2] == n ]
     return list_1
 
-def str_list(ini, fin, inte):
-    '''Genera una lista de numeros en formato str'''
-    l1 = list(range(ini, fin, inte))
-    l2 = [str(x) for x in l1]
-    return l2
-
-def sum_list1(data, para1, para2):
-    '''Divide una lista en (para2) y suma el calor de (para1) de la lista (data)'''
-    w_list = listfjson(data, para1)
-    n = para2
-    sum_list = [sum(w_list[i:i + n]) for i in range(0, len(w_list), n)]
-    return sum_list  
+def listfrow(data, p1):
+    '''Obtiene una y de un JSON (data) con los valores de 
+    (p1) y los filtra con set para eliminar valores repetidos'''
+    list_i = [d[p1] for d in data]
+    list_m =set(list_i)
+    list_f =list(list_m)
+    return list_f
 
 def bar_plot(x, y, lx, ly, t):
+    '''Grafico de barras simple'''
     plt.bar(x,y)
     plt.ylabel(ly)
     plt.xlabel(lx)
     plt.title(t)
     plt.show()
+
+def getinfo(data, p1, p2):
+    '''Obtiene una lista con la suma de los valores de data[p2][p1] para la lista de los valores de (p2)'''
+    info = []
+    klist = listfrow(data, p2)
+    for n in klist:
+        i = sum(listfjson(data, p1, p2, n))
+        info.append(i)
+    return info
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
@@ -79,9 +85,8 @@ if __name__ == '__main__':
 
     data = extract(url)
 
-    x = str_list(1, 11, 1)
-
-    y = sum_list1(data, 'completed', 20)
+x = listfrow(data, "userId")
+y = getinfo(data, "completed", "userId")
 
 print(x)
 print(y)
