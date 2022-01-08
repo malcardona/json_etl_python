@@ -19,7 +19,30 @@ def extract(url):
     data = response.json()
     return data
 
+def listfjson(data, para1):
+    '''Filtra un JSON (data) y genera una lista en base a un parametro (para1)'''
+    list_1 = [d[para1] for d in data]
+    return list_1
 
+def str_list(ini, fin, inte):
+    '''Genera una lista de numeros en formato str'''
+    l1 = list(range(ini, fin, inte))
+    l2 = [str(x) for x in l1]
+    return l2
+
+def sum_list1(data, para1, para2):
+    '''Divide una lista en (para2) y suma el calor de (para1) de la lista (data)'''
+    w_list = listfjson(data, para1)
+    n = para2
+    sum_list = [sum(w_list[i:i + n]) for i in range(0, len(w_list), n)]
+    return sum_list  
+
+def bar_plot(x, y, lx, ly, t):
+    plt.bar(x,y)
+    plt.ylabel(ly)
+    plt.xlabel(lx)
+    plt.title(t)
+    plt.show()
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")
@@ -43,8 +66,6 @@ if __name__ == '__main__':
     # gráfico en el eje "x" está cada uno de los 10 usuarios y en el eje
     # "y" la cantidad de títulos completados
 
-
-
     # Para poder ir haciendo esto debe ir almacenando la información
     # de cada usuario a medida que "itera" en un bucle los datos
     # del JSON recolectado. Al finalizar el bucle deberá tener la data
@@ -56,4 +77,15 @@ if __name__ == '__main__':
     # y verifique si los primeros usuarios (mirando la página a ojo)
     # los datos recolectados son correctos.
 
-    print("terminamos")
+    data = extract(url)
+
+    x = str_list(1, 11, 1)
+
+    y = sum_list1(data, 'completed', 20)
+
+print(x)
+print(y)
+
+bar = bar_plot(x, y, 'userId', 'Completed', 'ejercicio_2')
+
+print("terminamos")
