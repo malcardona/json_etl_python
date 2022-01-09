@@ -42,7 +42,8 @@ def bar_plot(x, y, lx, ly, t):
     plt.show()
 
 def getinfo(data, p1, p2):
-    '''Obtiene una lista con la suma de los valores de data[p2][p1] para la lista de los valores de (p2)'''
+    '''Obtiene una lista con la suma de los valores de data[p2][p1]
+     para cada item de la lista de valores de (p2)'''
     info = []
     klist = listfrow(data, p2)
     for n in klist:
